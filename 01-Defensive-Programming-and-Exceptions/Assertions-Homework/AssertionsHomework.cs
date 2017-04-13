@@ -6,16 +6,29 @@ class AssertionsHomework
 {
     public static void SelectionSort<T>(T[] arr) where T : IComparable<T>
     {
+        Debug.Assert(arr != null, "The collection (array) to be sorted cannot be null!");
+        Debug.Assert(arr.Length > 0, "The collection (array) to be sorted must have at least one element!");
+
+        T element = arr[0];
+
         for (int index = 0; index < arr.Length - 1; index++)
         {
             int minElementIndex = FindMinElementIndex(arr, index, arr.Length - 1);
             Swap(ref arr[index], ref arr[minElementIndex]);
+        }
+
+        if (arr.Length == 1)
+        {
+            Debug.Assert(element.Equals(arr[0]), "SelectionSort has changed the value the only element of the collection");
         }
     }
 
     private static int FindMinElementIndex<T>(T[] arr, int startIndex, int endIndex)
         where T : IComparable<T>
     {
+        Debug.Assert(0 <= startIndex && startIndex < arr.Length, string.Format("The start index {0} is outside the boundaries of the collection: 0 - {1}", startIndex, arr.Length - 1));
+        Debug.Assert(0 <= endIndex && endIndex < arr.Length, string.Format("The end index {0} is outside the boundaries of the collection: 0 - {1}", endIndex, arr.Length - 1));
+
         int minElementIndex = startIndex;
         for (int i = startIndex + 1; i <= endIndex; i++)
         {
