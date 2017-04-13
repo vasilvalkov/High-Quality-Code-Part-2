@@ -16,16 +16,31 @@ class ExceptionsHomework
 
     public static string ExtractEnding(string str, int count)
     {
-        if (count > str.Length)
+        if (string.IsNullOrWhiteSpace(str))
         {
-            return "Invalid count!";
+            throw new ArgumentException("The provided string is null or whitespace!");
+        }
+
+        int endingLength = 0;
+        if (0 <= count && count <= str.Length)
+        {
+            endingLength = count;
+        }
+        else if (count > str.Length)
+        {
+           endingLength = str.Length;
+        }
+        else
+        {
+            endingLength = 0;
         }
 
         StringBuilder result = new StringBuilder();
-        for (int i = str.Length - count; i < str.Length; i++)
+        for (int i = str.Length - endingLength; i < str.Length; i++)
         {
             result.Append(str[i]);
         }
+
         return result.ToString();
     }
 
