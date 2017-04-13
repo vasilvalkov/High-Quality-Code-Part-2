@@ -6,14 +6,14 @@ class AssertionsHomework
 {
     public static void SelectionSort<T>(T[] arr) where T : IComparable<T>
     {
-        for (int index = 0; index < arr.Length-1; index++)
+        for (int index = 0; index < arr.Length - 1; index++)
         {
             int minElementIndex = FindMinElementIndex(arr, index, arr.Length - 1);
             Swap(ref arr[index], ref arr[minElementIndex]);
         }
     }
-  
-    private static int FindMinElementIndex<T>(T[] arr, int startIndex, int endIndex) 
+
+    private static int FindMinElementIndex<T>(T[] arr, int startIndex, int endIndex)
         where T : IComparable<T>
     {
         int minElementIndex = startIndex;
@@ -24,6 +24,7 @@ class AssertionsHomework
                 minElementIndex = i;
             }
         }
+
         return minElementIndex;
     }
 
@@ -36,12 +37,17 @@ class AssertionsHomework
 
     public static int BinarySearch<T>(T[] arr, T value) where T : IComparable<T>
     {
+        Debug.Assert(arr != null, "The collection (array) of elements cannot be null!");
+        Debug.Assert(arr.Length > 0, "The collection (array) of elements must have at least one element!");
+
         return BinarySearch(arr, value, 0, arr.Length - 1);
     }
 
-    private static int BinarySearch<T>(T[] arr, T value, int startIndex, int endIndex) 
+    private static int BinarySearch<T>(T[] arr, T value, int startIndex, int endIndex)
         where T : IComparable<T>
     {
+        Debug.Assert(startIndex + endIndex != 0, "The collection (array) of elements is empty. It must have at least one element!");
+
         while (startIndex <= endIndex)
         {
             int midIndex = (startIndex + endIndex) / 2;
@@ -49,12 +55,13 @@ class AssertionsHomework
             {
                 return midIndex;
             }
+
             if (arr[midIndex].CompareTo(value) < 0)
             {
                 // Search on the right half
                 startIndex = midIndex + 1;
             }
-            else 
+            else
             {
                 // Search on the right half
                 endIndex = midIndex - 1;
