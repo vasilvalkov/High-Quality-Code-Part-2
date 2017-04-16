@@ -6,11 +6,33 @@ class ExceptionsHomework
 {
     public static T[] Subsequence<T>(T[] arr, int startIndex, int count)
     {
+        if (arr == null || arr.Length == 0)
+        {
+            throw new ArgumentException("The collection should contain elements!");
+        }
+
+        if (startIndex < 0 || arr.Length <= startIndex)
+        {
+            throw new ArgumentException("The start index of the subsequence is outside of the boundaries of the collection!");
+        }
+
+        if (count < 0 || arr.Length < count)
+        {
+            throw new ArgumentException("The subsequence elements count cannot be negative nor greater than the count of the elements in the collection!");
+        }
+
+        int subsequenceElementsCount = count;
+        if (startIndex + count >= arr.Length)
+        {
+            subsequenceElementsCount = arr.Length - startIndex;
+        }
+
         List<T> result = new List<T>();
-        for (int i = startIndex; i < startIndex + count; i++)
+        for (int i = startIndex; i < startIndex + subsequenceElementsCount; i++)
         {
             result.Add(arr[i]);
         }
+
         return result.ToArray();
     }
 
