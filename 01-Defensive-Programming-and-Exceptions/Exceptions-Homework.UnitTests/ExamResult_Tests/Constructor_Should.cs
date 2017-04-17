@@ -22,8 +22,32 @@ namespace Exceptions_Homework.UnitTests.ExamResult_Tests
         public void ThrowArgumentException_WhenThePassedMinGradeIsSmallerThanZero()
         {
             int validGrade = 4;
-            int validMinGrade = -1;
-            int validMaxGrade = 5;
+            int invalidMinGrade = -1;
+            int validMaxGrade = 6;
+            string validComments = "Some comments";
+
+            Assert.Throws<ArgumentException>(
+                () => new ExamResult(validGrade, invalidMinGrade, validMaxGrade, validComments));
+        }
+
+        [Test]
+        public void ThrowArgumentException_WhenThePassedMinGradeIsGreaterThanTheGrade()
+        {
+            int validGrade = 1;
+            int invalidMinGrade = 2;
+            int validMaxGrade = 6;
+            string validComments = "Some comments";
+
+            Assert.Throws<ArgumentException>(
+                () => new ExamResult(validGrade, invalidMinGrade, validMaxGrade, validComments));
+        }
+
+        [Test]
+        public void ThrowArgumentException_WhenThePassedMaxGradeIsSmallerThanThePassedGrade()
+        {
+            int validGrade = 7;
+            int validMinGrade = 2;
+            int validMaxGrade = 6;
             string validComments = "Some comments";
 
             Assert.Throws<ArgumentException>(
@@ -34,7 +58,7 @@ namespace Exceptions_Homework.UnitTests.ExamResult_Tests
         public void ThrowArgumentException_WhenThePassedMaxGradeIsSmallerThanThePassedMinGrade()
         {
             int validGrade = 4;
-            int validMinGrade = 3;
+            int validMinGrade = 4;
             int validMaxGrade = 2;
             string validComments = "Some comments";
 
@@ -61,7 +85,7 @@ namespace Exceptions_Homework.UnitTests.ExamResult_Tests
         [TestCase("\n")]
         public void ThrowArgumentException_WhenThePassedCommentsIsNullOrWhitespaceString(string invalidComments)
         {
-            int validGrade = 4;
+            int validGrade = 3;
             int validMinGrade = 3;
             int validMaxGrade = 3;
 
@@ -74,7 +98,7 @@ namespace Exceptions_Homework.UnitTests.ExamResult_Tests
         {
             int validGrade = 4;
             int validMinGrade = 2;
-            int validMaxGrade = 3;
+            int validMaxGrade = 6;
             string validComments = "Some comments";
 
             var result = new ExamResult(validGrade, validMinGrade, validMaxGrade, validComments);
@@ -87,7 +111,7 @@ namespace Exceptions_Homework.UnitTests.ExamResult_Tests
         {
             int validGrade = 4;
             int validMinGrade = 2;
-            int validMaxGrade = 3;
+            int validMaxGrade = 6;
             string validComments = "Some comments";
 
             var result = new ExamResult(validGrade, validMinGrade, validMaxGrade, validComments);
@@ -100,7 +124,7 @@ namespace Exceptions_Homework.UnitTests.ExamResult_Tests
         {
             int validGrade = 4;
             int validMinGrade = 2;
-            int validMaxGrade = 3;
+            int validMaxGrade = 6;
             string validComments = "Some comments";
 
             var result = new ExamResult(validGrade, validMinGrade, validMaxGrade, validComments);
@@ -113,12 +137,12 @@ namespace Exceptions_Homework.UnitTests.ExamResult_Tests
         {
             int validGrade = 4;
             int validMinGrade = 2;
-            int validMaxGrade = 3;
+            int validMaxGrade = 6;
             string validComments = "Some comments";
 
             var result = new ExamResult(validGrade, validMinGrade, validMaxGrade, validComments);
 
-            Assert.AreEqual(3, result.MaxGrade);
+            Assert.AreEqual(6, result.MaxGrade);
         }
 
         [Test]
@@ -126,7 +150,7 @@ namespace Exceptions_Homework.UnitTests.ExamResult_Tests
         {
             int validGrade = 4;
             int validMinGrade = 2;
-            int validMaxGrade = 3;
+            int validMaxGrade = 6;
             string validComments = "Some comments";
 
             var result = new ExamResult(validGrade, validMinGrade, validMaxGrade, validComments);

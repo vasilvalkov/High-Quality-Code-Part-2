@@ -44,12 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CSharpExam_Tests\Check_Should.cs" />
     <Compile Include="CSharpExam_Tests\Constructor_Should.cs" />
     <Compile Include="ExamResult_Tests\Constructor_Should.cs" />
     <Compile Include="ExceptionsHomework_Tests\ExtractEnding_Should.cs" />
     <Compile Include="ExceptionsHomework_Tests\PrimeCheck_Should.cs" />
     <Compile Include="ExceptionsHomework_Tests\Subsequence_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleMathExam_Tests\Check_Should.cs" />
+    <Compile Include="SimpleMathExam_Tests\Constructor_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Exceptions-Homework\Exceptions_Homework.csproj">
