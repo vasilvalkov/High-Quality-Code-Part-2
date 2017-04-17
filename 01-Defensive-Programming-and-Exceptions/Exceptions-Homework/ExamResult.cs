@@ -15,15 +15,18 @@ namespace Exceptions_Homework
             {
                 throw new ArgumentException("Grade cannot be negative!");
             }
+
             if (minGrade < 0)
             {
                 throw new ArgumentException("The minimal grade cannot be negative!");
             }
+
             if (maxGrade <= minGrade)
             {
                 throw new ArgumentException("The maximal grade cannot be smaller or equal to the minimal grade!");
             }
-            if (comments == null || comments == "")
+
+            if (string.IsNullOrWhiteSpace(comments))
             {
                 throw new ArgumentException("Comments cannot be null or empty!");
             }
