@@ -22,7 +22,7 @@ namespace Exceptions_Homework
 
             this.FirstName = firstName;
             this.LastName = lastName;
-            this.exams = exams;
+            this.Exams = exams;
         }
 
         public string FirstName { get; private set; }
