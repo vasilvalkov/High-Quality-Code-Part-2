@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExamResult_Tests\Constructor_Should.cs" />
     <Compile Include="ExceptionsHomework_Tests\ExtractEnding_Should.cs" />
     <Compile Include="ExceptionsHomework_Tests\PrimeCheck_Should.cs" />
     <Compile Include="ExceptionsHomework_Tests\Subsequence_Should.cs" />
