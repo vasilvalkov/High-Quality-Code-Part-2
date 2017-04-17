@@ -21,9 +21,19 @@ namespace Exceptions_Homework
                 throw new ArgumentException("The minimal grade cannot be negative!");
             }
 
+            if (minGrade > grade)
+            {
+                throw new ArgumentException("The minimal grade cannot be greater than the grade!");
+            }
+
             if (maxGrade <= minGrade)
             {
                 throw new ArgumentException("The maximal grade cannot be smaller or equal to the minimal grade!");
+            }
+
+            if (maxGrade < grade)
+            {
+                throw new ArgumentException("The maximal grade cannot be smaller than the grade!");
             }
 
             if (string.IsNullOrWhiteSpace(comments))
