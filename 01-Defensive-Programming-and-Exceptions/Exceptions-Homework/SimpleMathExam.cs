@@ -8,13 +8,9 @@ namespace Exceptions_Homework
 
         public SimpleMathExam(int problemsSolved)
         {
-            if (problemsSolved < 0)
+            if (problemsSolved < 0 || 10 < problemsSolved)
             {
-                problemsSolved = 0;
-            }
-            if (problemsSolved > 10)
-            {
-                problemsSolved = 10;
+                throw new ArgumentException("Invalid number of problems solved! Shouold be between 0 and 10!");
             }
 
             this.ProblemsSolved = problemsSolved;
@@ -35,7 +31,7 @@ namespace Exceptions_Homework
                 return new ExamResult(6, 2, 6, "Average result: nothing done.");
             }
 
-            return new ExamResult(0, 0, 0, "Invalid number of problems solved!");
+            throw new ArgumentException("Invalid number of problems solved!");
         }
     }
 }
