@@ -10,7 +10,12 @@ namespace Exceptions_Homework
         {
             if (score < 0)
             {
-                throw new NullReferenceException();
+                throw new ArgumentException("The score cannot be negative");
+            }
+
+            if (score > 100)
+            {
+                throw new ArgumentException("The score cannot be greater than 100");
             }
 
             this.Score = score;
@@ -18,14 +23,7 @@ namespace Exceptions_Homework
 
         public override ExamResult Check()
         {
-            if (Score < 0 || Score > 100)
-            {
-                throw new InvalidOperationException();
-            }
-            else
-            {
-                return new ExamResult(this.Score, 0, 100, "Exam results calculated by score.");
-            }
+            return new ExamResult(this.Score, 0, 100, "Exam results calculated by score.");
         }
     }
 }
