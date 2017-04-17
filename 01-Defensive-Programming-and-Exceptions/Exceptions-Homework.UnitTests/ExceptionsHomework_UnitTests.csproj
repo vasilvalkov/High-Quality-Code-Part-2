@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExceptionsHomework_Tests\ExtractEnding_Should.cs" />
     <Compile Include="ExceptionsHomework_Tests\Subsequence_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

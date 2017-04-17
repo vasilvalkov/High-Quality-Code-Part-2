@@ -113,5 +113,20 @@ namespace ExceptionsHomework_UnitTests.ExceptionsHomework_Tests
             // Assert
             Assert.AreEqual(expectedCollection, result);
         }
+
+        [Test]
+        public void ReturnNewCollection_WhenAllPassedParametersAreValid()
+        {
+            // Arrange
+            int validStartIndex = 0;
+            int validCount = 4;
+            int[] validCollection = new int[] { 1, 2, 3, 4 };
+            int[] expectedCollection = new int[] { 1, 2, 3, 4 };
+
+            // Act
+            var result = ExceptionsHomework.Subsequence<int>(validCollection, validStartIndex, validCount);
+            // Assert
+            Assert.AreNotSame(expectedCollection, result);
+        }
     }
 }
