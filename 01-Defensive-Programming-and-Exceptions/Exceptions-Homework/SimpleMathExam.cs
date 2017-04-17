@@ -1,38 +1,41 @@
 ﻿using System;
 
-public class SimpleMathExam : Exam
+namespace Exceptions_Homework
 {
-    public int ProblemsSolved { get; private set; }
-
-    public SimpleMathExam(int problemsSolved)
+    public class SimpleMathExam : Exam
     {
-        if (problemsSolved < 0)
+        public int ProblemsSolved { get; private set; }
+
+        public SimpleMathExam(int problemsSolved)
         {
-            problemsSolved = 0;
-        }
-        if (problemsSolved > 10)
-        {
-            problemsSolved = 10;
+            if (problemsSolved < 0)
+            {
+                problemsSolved = 0;
+            }
+            if (problemsSolved > 10)
+            {
+                problemsSolved = 10;
+            }
+
+            this.ProblemsSolved = problemsSolved;
         }
 
-        this.ProblemsSolved = problemsSolved;
-    }
+        public override ExamResult Check()
+        {
+            if (ProblemsSolved == 0)
+            {
+                return new ExamResult(2, 2, 6, "Bad result: nothing done.");
+            }
+            else if (ProblemsSolved == 1)
+            {
+                return new ExamResult(4, 2, 6, "Average result: nothing done.");
+            }
+            else if (ProblemsSolved == 2)
+            {
+                return new ExamResult(6, 2, 6, "Average result: nothing done.");
+            }
 
-    public override ExamResult Check()
-    {
-        if (ProblemsSolved == 0)
-        {
-            return new ExamResult(2, 2, 6, "Bad result: nothing done.");
+            return new ExamResult(0, 0, 0, "Invalid number of problems solved!");
         }
-        else if (ProblemsSolved == 1)
-        {
-            return new ExamResult(4, 2, 6, "Average result: nothing done.");
-        }
-        else if (ProblemsSolved == 2)
-        {
-            return new ExamResult(6, 2, 6, "Average result: nothing done.");
-        }
-
-        return new ExamResult(0, 0, 0, "Invalid number of problems solved!");
     }
 }
