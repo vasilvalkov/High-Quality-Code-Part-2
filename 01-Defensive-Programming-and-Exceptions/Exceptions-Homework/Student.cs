@@ -6,36 +6,49 @@ namespace Exceptions_Homework
 {
     public class Student
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public IList<Exam> Exams { get; set; }
+        private IList<Exam> exams;
 
         public Student(string firstName, string lastName, IList<Exam> exams = null)
         {
-            if (firstName == null)
+            if (string.IsNullOrWhiteSpace(firstName))
             {
-                Console.WriteLine("Invalid first name!");
-                Environment.Exit(0);
+                throw new ArgumentException("The first name cannot be null or empty!");
             }
 
-            if (lastName == null)
+            if (string.IsNullOrWhiteSpace(lastName))
             {
-                Console.WriteLine("Invalid first name!");
-                Environment.Exit(0);
+                throw new ArgumentException("The last name cannot be null or empty!");
             }
 
             this.FirstName = firstName;
             this.LastName = lastName;
-            this.Exams = exams;
+            this.exams = exams;
+        }
+
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+        public IList<Exam> Exams
+        {
+            get
+            {
+                return this.exams;
+            }
+
+            set
+            {
+                if (value == null)
+                {
+                    this.exams = new List<Exam>();
+                }
+                else
+                {
+                    this.exams = value;
+                }
+            }
         }
 
         public IList<ExamResult> CheckExams()
         {
-            if (this.Exams == null)
-            {
-                throw new Exception("Wow! Error happened!!!");
-            }
-
             if (this.Exams.Count == 0)
             {
                 Console.WriteLine("The student has no exams!");
@@ -53,20 +66,15 @@ namespace Exceptions_Homework
 
         public double CalcAverageExamResultInPercents()
         {
-            if (this.Exams == null)
-            {
-                // Cannot calculate average on missing exams
-                throw new Exception();
-            }
-
             if (this.Exams.Count == 0)
             {
-                // No exams --> return -1;
-                return -1;
+                return 0;
             }
 
             double[] examScore = new double[this.Exams.Count];
+
             IList<ExamResult> examResults = CheckExams();
+
             for (int i = 0; i < examResults.Count; i++)
             {
                 examScore[i] =
