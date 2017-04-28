@@ -52,12 +52,18 @@
   <ItemGroup>
     <Compile Include="Core\Commands\Contracts\ICommand.cs" />
     <Compile Include="Core\Commands\CreateStudentCommand.cs" />
+    <Compile Include="Core\Commands\CreateTeacherCommand.cs" />
+    <Compile Include="Core\Commands\RemoveStudentCommand.cs" />
+    <Compile Include="Core\Commands\RemoveTeacherCommand.cs" />
+    <Compile Include="Core\Commands\StudentListMarksCommand.cs" />
+    <Compile Include="Core\Commands\TeacherAddMarkCommand.cs" />
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\Providers\ConsoleReaderProvider.cs" />
     <Compile Include="Core\Providers\Contracts\IReader.cs" />
     <Compile Include="Models\Contracts\IMark.cs" />
     <Compile Include="Models\Contracts\IStudent.cs" />
     <Compile Include="Models\Contracts\ITeacher.cs" />
+    <Compile Include="Models\Contracts\IPerson.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Enums\Grade.cs" />

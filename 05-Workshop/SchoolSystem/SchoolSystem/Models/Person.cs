@@ -1,8 +1,9 @@
-﻿using System;
+﻿using SchoolSystem.Models.Contracts;
+using System;
 
 namespace SchoolSystem.Models
 {
-    public class Person
+    public class Person : IPerson
     {
         private const int MIN_FULL_NAME_LENGTH = 2;
         private const int MAX_FULL_NAME_LENGTH = 31;
