@@ -1,84 +1,69 @@
 ﻿using SchoolSystem.Core.Commands.Contracts;
 using SchoolSystem.Core.Providers.Contracts;
 using SchoolSystem.Models;
+using SchoolSystem.Models.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Threading;
 
 namespace SchoolSystem.Core
 {
-    class Engine
+    public class Engine
     {
-        // TODO: change param to IReader instead ConsoleReaderProvider
-        // mujhe tum par vishvaas hai
-        public Engine(IReader reader)
+        internal readonly static IDictionary<int, ITeacher> teachers = new Dictionary<int, ITeacher>();
+        internal readonly static IDictionary<int, IStudent> students = new Dictionary<int, IStudent>();
+        private readonly IReader Reader;
+        private readonly IWriter Writer;
+        
+        public Engine(IReader reader, IWriter writer)
         {
-            read = reader;
+            if (reader == null || writer == null)
+            {
+                throw new ArgumentException("Both reader nor writer can be null!");
+            }
+
+            this.Reader = reader;
+            this.Writer = writer;
         }
 
-        public void BrumBrum()
+
+        public void Execute()
         {
             while (true)
             {
                 try
                 {
-                    var cmd = System.Console.ReadLine();
-                    if (cmd == "End")
+                    var inputCommand = Reader.ReadLine();
+                    if (inputCommand == "End")
                     {
                         break;
                     }
-                    var aadeshName = cmd.Split(' ')[0];
 
-                    // When I wrote this, only God and I understood what it was doing
-                    // Now, only God knows
-                    var assembli = GetType().GetTypeInfo().Assembly;
-                    var tpyeinfo = assembli.DefinedTypes
+                    var commandName = inputCommand.Split(' ')[0];
+                    var assembly = GetType().GetTypeInfo().Assembly;
+
+                    var commandType = assembly.DefinedTypes
                         .Where(type => type.ImplementedInterfaces.Any(inter => inter == typeof(ICommand)))
-                        .Where(type => type.Name.ToLower().Contains(aadeshName.ToLower()))
+                        .Where(type => type.Name.ToLower().Contains(commandName.ToLower()))
                         .FirstOrDefault();
-                    if (tpyeinfo == null)
+
+                    if (commandType == null)
                     {
-                        // throw exception when typeinfo is null
                         throw new ArgumentException("The passed command is not found!");
                     }
-                    var aadesh = Activator.CreateInstance(tpyeinfo) as ICommand;
-                    var paramss = cmd.Split(' ').ToList();
-                    paramss.RemoveAt(0);
-                    WriteLine(aadesh.Execute(paramss));
+
+                    var command = Activator.CreateInstance(commandType) as ICommand;
+                    var commandParams = inputCommand.Split(' ').ToList();
+                    commandParams.RemoveAt(0);
+
+                    Writer.WriteLine(command.Execute(commandParams));
                 }
                 catch (Exception ex)
                 {
-                    WriteLine(ex.Message);
+                    Writer.WriteLine(ex.Message);
                 }
             }
         }
-
-        private IReader read;
-
-        void WriteLine(string m)
-        {
-            var p = m.Split();
-            var s = string.Join(" ", p);
-            var c = 0d;
-
-            for (double i = 0; i < 0x105; i++)
-            {
-                try
-                {
-                    Console.Write(s[int.Parse(i.ToString())]);
-                }
-                catch (Exception)
-                {
-                    //who cares?
-                }
-            }
-            Console.Write("\n");
-            Thread.Sleep(350);
-        }
-
-        internal static Dictionary<int, Teacher> teachers { get; set; } = new Dictionary<int, Teacher>();
-        internal static Dictionary<int, Student> students { get; set; } = new Dictionary<int, Student>();
     }
 }

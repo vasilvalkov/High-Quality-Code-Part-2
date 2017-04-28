@@ -3,7 +3,7 @@ using System;
 
 namespace SchoolSystem.Core.Providers
 {
-    public class ConsoleReaderProvider : IReader
+    public class ConsoleReader : IReader
     {
         public string ReadLine()
         {

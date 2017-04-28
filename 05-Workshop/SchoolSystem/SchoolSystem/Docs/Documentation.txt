@@ -1,12 +1,12 @@
 ﻿Bottleneck description: --------------------
-#1:
+#1: Engine.WriteLiine() is redundant and makes no use. It has a Trwad.Sleap(350) and a loop to very big number.
 
 
 Bug reports: --------------------
 Format: #Bug number - Class name - Bug description
 Example: #1 - PartnerBankingService - The variable "money" at line 36 overflows when you try to add more than 2.1 billion dollars.
 --------
-#1 -
+#1 - TeacherAddMarkCommand - The student and teacher IDs were swapped and the command throws exception.
 #2 -
 #3 -
 #4 - 

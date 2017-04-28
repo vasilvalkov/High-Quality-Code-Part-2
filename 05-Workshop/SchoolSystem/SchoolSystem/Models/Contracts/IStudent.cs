@@ -3,10 +3,12 @@ using System.Collections.Generic;
 
 namespace SchoolSystem.Models.Contracts
 {
-    public interface IStudent
+    public interface IStudent : IPerson
     {
         Grade Grade { get; }
 
         IList<IMark> Marks { get; }
+
+        string ListMarks();
     }
 }

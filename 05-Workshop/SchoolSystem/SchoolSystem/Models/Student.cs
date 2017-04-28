@@ -59,9 +59,9 @@ namespace SchoolSystem.Models
 
         public string ListMarks()
         {
-            var potatos = marks.Select(m => $"{m.Subject} => {m.Value}").ToList();
+            var allMarks = marks.Select(m => $"{m.Subject} => {m.Value}").ToList();
 
-            return string.Join("\n", potatos);
+            return string.Join("\n", allMarks);
         }
     }
 }

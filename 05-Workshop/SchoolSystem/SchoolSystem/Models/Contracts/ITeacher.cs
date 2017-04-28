@@ -2,7 +2,7 @@
 
 namespace SchoolSystem.Models.Contracts
 {
-    public interface ITeacher
+    public interface ITeacher : IPerson
     {
         Subjct Subject { get; }
 
