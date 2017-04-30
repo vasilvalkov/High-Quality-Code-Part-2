@@ -1,0 +1,1 @@
+The documented project is from HQC-1 homework Code-Documentation-And-Comments

@@ -1,0 +1,5 @@
+2017-04-30 11:59:59,358 INFO  SchoolSystem.Core.Commands.TeacherAddMarkCommand - Teacher Gosho Vesheff added mark 3 to student Pesho Petrov in Math.
+2017-04-30 11:59:59,389 INFO  SchoolSystem.Core.Commands.TeacherAddMarkCommand - Teacher Gosho Vesheff added mark 2 to student Pesho Petrov in Math.
+2017-04-30 11:59:59,392 INFO  SchoolSystem.Core.Commands.TeacherAddMarkCommand - Teacher Stamat Shop added mark 5 to student Gosho Petrov in English.
+2017-04-30 11:59:59,395 INFO  SchoolSystem.Core.Commands.TeacherAddMarkCommand - Teacher Stamat Shop added mark 4 to student Gosho Petrov in English.
+2017-04-30 11:59:59,399 INFO  SchoolSystem.Core.Commands.TeacherAddMarkCommand - Teacher Stamat Shop added mark 3 to student Pesho Petrov in English.
