@@ -11,12 +11,14 @@ namespace SchoolSystem.Core.Commands
             var studentId = int.Parse(prms[1]);
             var mark = float.Parse(prms[2]);
             // Please work
-            var students = Engine.students[studentId];
-            var teachers = Engine.teachers[teacherId];
+            var student = Engine.students[studentId];
+            var teacher = Engine.teachers[teacherId];
 
-            teachers.AddMark(students, mark);
+            teacher.AddMark(student, mark);
 
-            return $"Teacher {teachers.FirstName} {teachers.LastName} added mark {float.Parse(prms[2])} to student {students.FirstName} {students.LastName} in {teachers.Subject}.";
+            string outputMessege = $"Teacher {teacher.FirstName} {teacher.LastName} added mark {float.Parse(prms[2])} to student {student.FirstName} {student.LastName} in {teacher.Subject}.";
+            
+            return outputMessege;
         }
     }
 }
