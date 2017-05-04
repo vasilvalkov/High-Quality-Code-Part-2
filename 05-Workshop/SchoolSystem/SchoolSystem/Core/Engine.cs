@@ -6,13 +6,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 
 namespace SchoolSystem.Core
 {
     public class Engine
     {
-        internal readonly static IDictionary<int, ITeacher> teachers = new Dictionary<int, ITeacher>();
-        internal readonly static IDictionary<int, IStudent> students = new Dictionary<int, IStudent>();
+        internal readonly static IDictionary<int, ITeacher> Teachers = new Dictionary<int, ITeacher>();
+        internal readonly static IDictionary<int, IStudent> Students = new Dictionary<int, IStudent>();
         private readonly IReader Reader;
         private readonly IWriter Writer;
         
@@ -30,6 +31,8 @@ namespace SchoolSystem.Core
 
         public void Execute()
         {
+            StringBuilder resultBuilder = new StringBuilder();
+
             while (true)
             {
                 try
@@ -37,6 +40,7 @@ namespace SchoolSystem.Core
                     var inputCommand = Reader.ReadLine();
                     if (inputCommand == "End")
                     {
+                        Writer.WriteLine(resultBuilder.ToString());
                         break;
                     }
 
@@ -57,7 +61,9 @@ namespace SchoolSystem.Core
                     var commandParams = inputCommand.Split(' ').ToList();
                     commandParams.RemoveAt(0);
 
-                    Writer.WriteLine(command.Execute(commandParams));
+                    string commandResult = command.Execute(commandParams);
+
+                    resultBuilder.AppendLine(commandResult);                    
                 }
                 catch (Exception ex)
                 {

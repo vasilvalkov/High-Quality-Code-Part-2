@@ -7,7 +7,7 @@ namespace SchoolSystem.Core.Commands
     {
         public string Execute(IList<string> parameters)
         {
-            return Engine.students[int.Parse(parameters[0])].ListMarks();
+            return Engine.Students[int.Parse(parameters[0])].ListMarks();
         }
     }
 }

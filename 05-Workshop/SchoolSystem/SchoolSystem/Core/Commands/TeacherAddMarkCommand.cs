@@ -11,8 +11,8 @@ namespace SchoolSystem.Core.Commands
             var studentId = int.Parse(prms[1]);
             var mark = float.Parse(prms[2]);
             // Please work
-            var student = Engine.students[studentId];
-            var teacher = Engine.teachers[teacherId];
+            var student = Engine.Students[studentId];
+            var teacher = Engine.Teachers[teacherId];
 
             teacher.AddMark(student, mark);
 

@@ -7,6 +7,6 @@ Format: #Bug number - Class name - Bug description
 Example: #1 - PartnerBankingService - The variable "money" at line 36 overflows when you try to add more than 2.1 billion dollars.
 --------
 #1 - TeacherAddMarkCommand - The student is generated with the theacher's ID and teacher is generated with the sydent's IDs  and the command throws exception or gives erroneous result.
-#2 -
+#2 - Engine - The engine printed command result rightaway instead of waiting for End command an then print all command results as shown in the zero tests output. To fix this I introduced a string builder too accumulate commands result and on the End command it outputs al results altogether.
 #3 -
 #4 - 

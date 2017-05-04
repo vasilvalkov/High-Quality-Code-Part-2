@@ -12,7 +12,7 @@ namespace SchoolSystem.Core.Commands
 
         public string Execute(IList<string> para)
         {
-            Engine.teachers.Add(id, new Teacher(para[0], para[1], (Subjct)int.Parse(para[2])));
+            Engine.Teachers.Add(id, new Teacher(para[0], para[1], (Subjct)int.Parse(para[2])));
 
             return $"A new teacher with name {para[0]} {para[1]}, subject {(Grade)int.Parse(para[2])} and ID {id++} was created.";
         }
