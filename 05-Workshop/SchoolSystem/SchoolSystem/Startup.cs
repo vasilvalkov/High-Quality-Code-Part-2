@@ -11,7 +11,7 @@ namespace SchoolSystem
             var writer = new ConsoleWriter();
             var engine = new Engine(reader, writer);
 
-            engine.Execute();
+            engine.Ignite();
         }
     }
 }

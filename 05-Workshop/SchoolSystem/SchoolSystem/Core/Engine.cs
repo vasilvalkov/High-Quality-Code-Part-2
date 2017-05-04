@@ -28,8 +28,7 @@ namespace SchoolSystem.Core
             this.Writer = writer;
         }
 
-
-        public void Execute()
+        public void Ignite()
         {
             StringBuilder resultBuilder = new StringBuilder();
 
@@ -63,7 +62,7 @@ namespace SchoolSystem.Core
 
                     string commandResult = command.Execute(commandParams);
 
-                    resultBuilder.AppendLine(commandResult);                    
+                    resultBuilder.AppendLine(commandResult);
                 }
                 catch (Exception ex)
                 {
