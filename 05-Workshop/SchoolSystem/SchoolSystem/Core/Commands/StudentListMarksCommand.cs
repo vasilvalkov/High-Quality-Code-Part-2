@@ -10,14 +10,22 @@ namespace SchoolSystem.Core.Commands
     {
         public string Execute(IList<string> parameters)
         {
-            IStudent student = Engine.Students[int.Parse(parameters[0])];
+            try
+            {
+                int studentId = int.Parse(parameters[0]);
+                IStudent student = Engine.Students[studentId];
 
-            var allMarks = student.Marks.Select(m => $"{m.Subject} => {m.Value}").ToList();
+                var allMarks = student.Marks.Select(m => $"{m.Subject} => {m.Value}").ToList();
 
-            return "The student has these marks:" + 
-                Environment.NewLine + 
-                string.Join("\n", allMarks) + 
-                Environment.NewLine;
+                return "The student has these marks:" +
+                    Environment.NewLine +
+                    string.Join("\n", allMarks) +
+                    Environment.NewLine;
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return ex.Message;
+            }
         }
     }
 }
