@@ -16,12 +16,6 @@ namespace SchoolSystem.Models.Contracts
         /// <summary>
         /// The makrs obtained by the student.
         /// </summary>
-        IList<IMark> Marks { get; }
-
-        /// <summary>
-        /// Lists all marks of the student.
-        /// </summary>
-        /// <returns>Returns a string containing all marks of the student.</returns>
-        string ListMarks();
+        IList<IMark> Marks { get; }        
     }
 }

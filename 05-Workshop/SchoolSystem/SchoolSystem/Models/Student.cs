@@ -56,12 +56,5 @@ namespace SchoolSystem.Models
                 }                
             }
         }
-
-        public string ListMarks()
-        {
-            var allMarks = marks.Select(m => $"{m.Subject} => {m.Value}").ToList();
-
-            return string.Join("\n", allMarks);
-        }
     }
 }
