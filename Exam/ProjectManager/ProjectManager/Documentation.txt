@@ -1,0 +1,12 @@
+﻿Bugs:
+
+#1 - ModelsFactory.CreateUser() - The parameters username and email were swapped in the user creation declaration - new User(email, username). To fix this I reordered correctly the parameters.
+#2 - CommandFactory.CreateCommandFromString() - Missing case for createuser command. To fix this I added the missing case.
+#3 - Engine.Start() - The engine printed command result rightaway instead of waiting for Exit command an then to print all command results as shown in the zero tests output. To fix this I introduced a string builder too accumulate commands result and on the End command it outputs al results altogether.
+#4 - ModelsFactory.CreateUser() - Does not add created user to a project. Fixed
+#5 - ModelsFactory.CreateTask() - Does not add created task to a project. Fixed
+#6 - Task.ToString() - Does not include owner. Fixed
+
+Bottleneck:
+
+#1 - CommandFactory.BuildCommand() - Unneccesary while loop -> while (DateTime.Now < end); I've commented it.
